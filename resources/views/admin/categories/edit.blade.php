@@ -1,0 +1,44 @@
+@extends('admin.layout.index')
+
+@section('content')
+    <a class="btn btn-success mb-2" href="{{ route('admin.categories.index') }}">الكل</a>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">تعديل</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form enctype="multipart/form-data" method="POST" action="{{ route('admin.categories.update',$item->id) }}" role="form">
+            @csrf
+            @method("PUT")
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">اسم القسم عربي</label>
+                    <input name="title_ar" value="{{ old('title_ar',$item->title_ar) }}" type="text" class="form-control"
+                        id="exampleInputEmail1">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">اسم القسم انجليزي</label>
+                    <input name="title_en" value="{{ old('title_en',$item->title_en) }}" type="text" class="form-control"
+                        id="exampleInputEmail1">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">صورة</label>
+                    <input name="logo"  type="file" class="form-control"
+                        id="exampleInputEmail1">
+
+                </div>
+
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">تعديل <i class="fa fa-save"></i> </button>
+            </div>
+        </form>
+    </div>
+@endsection
